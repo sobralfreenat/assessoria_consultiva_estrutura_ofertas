@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Lead - Assessoria Consultiva Estratégica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .accordion {
+            margin-bottom: 20px;
+        }
+        .accordion-header {
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: left;
+        }
+        .accordion-content {
+            display: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #fff;
+        }
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #proposalModal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        #proposalContent {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: left;
+            width: 80%;
+            max-width: 600px;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion()">Cadastro de Lead</div>
+        <div class="accordion-content" id="accordionContent">
+            <form id="leadForm">
+                <label for="name">Nome da Pessoa:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="empresa">Nome da Empresa:</label>
+                <input type="text" id="empresa" name="empresa" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="celular">Contato Celular:</label>
+                <input type="tel" id="celular" name="celular" required>
+
+                <button type="button" onclick="saveLead()">Salvar Cadastro como JSON</button>
+                <input type="file" id="fileInput" accept=".json" onchange="loadJSON(event)">
+                <button type="button" onclick="document.getElementById('fileInput').click()">Carregar JSON</button>
+            </form>
+        </div>
+    </div>
+
+    <h1>Assessoria Consultiva Estratégica: Estrutura e Ofertas</h1>
+    <p>Transformando os Serviços Limitantes em Produto Escalável. Esta proposta de parceria estratégica digital visa transformar a maneira como oferecemos consultoria e mentoria, migrando para um modelo de assessoria mais eficiente, escalável e com crescimento recorrente.</p>
+
+
+  <h3>Objetivos da Assessoria</h3>
+    <p>Identificação clara dos problemas e oportunidades, desenvolvimento de soluções adaptadas às necessidades específicas da empresa e suporte constante para garantir a eficácia das estratégias implementadas.</p>
+
+<h3>Diferenciais</h3>
+<h4>Experiência Comprovada</h4>
+<p>Nossa equipe possui um histórico sólido de triplicar receitas e lucratividade utilizando metodologias eficazes.</p>
+
+<h4>Metodologias Orientadas ao Crescimento</h4>
+<p>Aplicamos ferramentas e técnicas que promovem o crescimento recorrente e escalável, adaptando estratégias às necessidades específicas de cada cliente.</p>
+
+<h4>Suporte Contínuo</h4>
+<p>Oferecemos acompanhamento constante para garantir que as estratégias implementadas sejam eficazes e gerem resultados sustentáveis.</p>
+
+
+
+    <h3>Selecionar Componentes da Assessoria</h3>
+<h5> Recomendamos considerar a fase atual do seu negócio e marcar somente o que estiver alinhado com seu momento. COnsidere todos apenas se houver necessidade de : Aceleração com exclusividade de segmento.</h5>
+  
+
+    <div class="component">
+        <label>
+            <input type="checkbox" id="selectAll" onclick="toggleSelectAll()"> Selecionar Todos
+        </label>
+<br>
+<label>
+            <input type="checkbox" name="components" value="LDR_Leads Development Representative"> LDR - Leads Alinhados com Objetivos do Negócio (listas de qualificação b2b)
+        </label>
+
+<br>
+<label>
+            <input type="checkbox" name="components" value="SDR_Sales Development Representative"> SDR - Representante de Vendas (5-8 Agendamentos)
+   </label>
+<br>
+
+<label>
+ <input type="checkbox" name="components" value="SDR_Sales Development Representative"> BDR - Desenvolvimento de Negócio - Consultivo (atende agendamentos)
+        </label>
+
+<br>
+        <label>
+            <input type="checkbox" name="components" value="VLAS_VideoLaerning As Service"> 1 Video Informacional Produto /Serviço Ads (Short)
+        </label>
+
+<br>
+        <label>
+            <input type="checkbox" name="components" value="VLAD_VLAX"> 1 Vídeo de Orientação/Instrucional/Demonstração (6-9 min)
+        </label>
+
+<br>
+
+<label>
+            <input type="checkbox" name="components" value="VLAP"> 1 Vídeo de Proposta de Valor/ Comercial (6-9 min)
+        </label>
+<br>
+
+       <!-- <label>
+            <input type="checkbox" name="components" value="menu_insights"> Menu Digital Estruturado com Insights de Orientação
+        </label> -->
+
+
+
+        <label>
+            <input type="checkbox" name="components" value="menu_insights_video"> Menu de Acesso ao(s) Vídeo(s) Listas e Ferram. (Estratégica)
+        </label>
+
+<br>
+
+       <!-- <label>
+            <input type="checkbox" name="components" value="aprendizado_estruturado"> Aprendizado Estruturado (Videoaulas/Cursos)
+        </label> -->
+      
+
+  <label>
+    <input type="checkbox" name="components" value="acompanhamento_estrategico"> Assessoria Desafio com Acomp. Estratégico Quinzenal
+        </label>
+<br>
+
+        <label>
+            <input type="checkbox" name="components" value="acesso_material"> Assessoria Consultiva + 4 Acessos 24/7 a Material de Apoio
+        </label>
+__________________________________
+<br><br>
+ <label>
+            <input type="checkbox" name="components" value="PLANEJ ESTRATET"> Planejamento Estratégico com alinhamento  de Objetivos e Diretriz Comercial - 9 Sessões - Quinzenais. 
+        </label>
+
+<br>
+ <label>
+            <input type="checkbox" name="components" value="MKT Digital Trafego"> Planejamento e Execução de Marketing Digital com Operação de Tráfego Pago (custo com anúncios com % a definir)
+        </label>
+
+
+<br><br>
+
+
+
+ <h3>Após a seleção clique em calcular e gerar proposta</h3>
+<h5> Em caso de dúvidas, por gentileza, entre em contato por +5511 9 1159 5028.</h5>
+
+    </div>
+
+    <button type="button" onclick="updateTotal()">Calcular</button>
+    <button type="button" onclick="generateProposal()">Gerar Proposta</button>
+    <h3>Total Contratado: R$ <span id="total">0</span></h3>
+
+    <div id="proposalModal">
+        <div id="proposalContent">
+            <h3>Proposta Gerada</h3>
+            <pre id="proposalText"></pre>
+            <button onclick="closeProposalModal()">Fechar</button>
+            <button onclick="copyToClipboard()">Copiar para Clipboard</button>
+        </div>
+    </div>
+
+    <script>
+        const values = [897, 897, 497, 997, 1497, 2497, 3697, 5597, 9257, 4477, 2597];
+
+        function toggleAccordion() {
+            const content = document.getElementById('accordionContent');
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function updateTotal() {
+            const checkboxes = document.querySelectorAll('input[name="components"]');
+            let total = 0;
+            let lastCheckedIndex = -1;
+
+            checkboxes.forEach((checkbox, index) => {
+                if (checkbox.checked) {
+                    total += values[index];
+                    if (lastCheckedIndex === -1) {
+                        lastCheckedIndex = index;
+                    } else {
+                        for (let i = lastCheckedIndex + 1; i <= index; i++) {
+                            total += values[i];
+                        }
+                        lastCheckedIndex = index;
+                    }
+                }
+            });
+
+            document.getElementById('total').innerText = total;
+        }
+
+        function saveLead() {
+            const name = document.getElementById('name').value;
+            const empresa = document.getElementById('empresa').value;
+            const email = document.getElementById('email').value;
+            const celular = document.getElementById('celular').value;
+            const components = Array.from(document.querySelectorAll('input[name="components"]:checked')).map(el => el.value);
+            const quantidadeSelecoes = components.length;
+
+            const leadData = {
+                nome: name,
+                empresa: empresa,
+                email: email,
+                celular: celular,
+                numero_de_selecoes: quantidadeSelecoes,
+                total_mensalidade: document.getElementById('total').innerText,
+                components: components
+            };
+
+            const jsonString = JSON.stringify(leadData, null, 2);
+            const blob = new Blob([jsonString], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${name}_${empresa}_${quantidadeSelecoes}_cadastro.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function loadJSON(event) {
+            const file = event.target.files[0];
+            if (!file) {
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const data = JSON.parse(e.target.result);
+                document.getElementById('name').value = data.nome || '';
+                document.getElementById('empresa').value = data.empresa || '';
+                document.getElementById('email').value = data.email || '';
+                document.getElementById('celular').value = data.celular || '';
+                data.components.forEach(component => {
+                    const checkbox = document.querySelector(`input[name="components"][value="${component}"]`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+                });
+                updateTotal();
+            };
+            reader.readAsText(file);
+        }
+
+        function toggleSelectAll() {
+            const selectAllCheckbox = document.getElementById('selectAll');
+            const checkboxes = document.querySelectorAll('input[name="components"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = selectAllCheckbox.checked;
+            });
+            updateTotal();
+        }
+
+        function generateProposal() {
+            const name = document.getElementById('name').value;
+            const empresa = document.getElementById('empresa').value;
+            const email = document.getElementById('email').value;
+            const celular = document.getElementById('celular').value;
+            const total = document.getElementById('total').innerText;
+            const components = Array.from(document.querySelectorAll('input[name="components"]:checked')).map(el => el.parentNode.textContent.trim()).join('\n');
+
+            const proposalMarkdown = `
+# Proposta de Assessoria Consultiva Estratégica
+
+**Nome:** ${name}  
+**Empresa:** ${empresa}  
+**Email:** ${email}  
+**Celular:** ${celular}  
+**Total da Mensalidade:** R$ ${total}
+
+
+ 
+
+## Componentes Selecionados
+${components}
+
+
+**Copie a proposta gerada e envie para freenat.doc@gmail.com 
+Solicite contato para negociação 
+`;
+
+            document.getElementById('proposalText').innerText = proposalMarkdown;
+            document.getElementById('proposalModal').style.display = 'flex';
+        }
+
+        function closeProposalModal() {
+            document.getElementById('proposalModal').style.display = 'none';
+        }
+
+        function copyToClipboard() {
+            const proposalText = document.getElementById('proposalText').innerText;
+            navigator.clipboard.writeText(proposalText).then(() => {
+                alert('Proposta copiada para o clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>
